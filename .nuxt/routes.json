@@ -1,0 +1,51 @@
+[
+  {
+    "name": "store",
+    "path": "/store",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\store\\\\index.vue",
+    "chunkName": "pages/store/index",
+    "_name": "_d6c6b57a"
+  },
+  {
+    "name": "store-category-slug",
+    "path": "/store/category/:slug",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\store\\\\category\\\\_slug\\\\index.vue",
+    "chunkName": "pages/store/category/_slug/index",
+    "_name": "_9d404f36"
+  },
+  {
+    "name": "store-product-slug",
+    "path": "/store/product/:slug",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\store\\\\product\\\\_slug\\\\index.vue",
+    "chunkName": "pages/store/product/_slug/index",
+    "_name": "_6a4674a8"
+  },
+  {
+    "name": "store-category-slug-facet",
+    "path": "/store/category/:slug?/:facet",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\store\\\\category\\\\_slug\\\\_facet\\\\index.vue",
+    "chunkName": "pages/store/category/_slug/_facet/index",
+    "_name": "_506dd3a6"
+  },
+  {
+    "name": "category-slug",
+    "path": "/category/:slug",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\category\\\\_slug\\\\index.vue",
+    "chunkName": "pages/category/_slug/index",
+    "_name": "_2f58a378"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_d8d53460"
+  },
+  {
+    "name": "slug",
+    "path": "/:slug",
+    "component": "C:\\\\whoobe-alpha\\\\whoobe-nuxt\\\\pages\\\\_slug\\\\index.vue",
+    "chunkName": "pages/_slug/index",
+    "_name": "_5ea2320c"
+  }
+]
