@@ -58,10 +58,10 @@ const components = {
   PluginsStoreAddToCart: () => import('../..\\components\\plugins\\store\\whoobe\\store.add.to.cart.js' /* webpackChunkName: "components/plugins-store-add-to-cart" */).then(c => wrapFunctional(c.default || c)),
   PluginsStoreCategories: () => import('../..\\components\\plugins\\store\\whoobe\\store.categories.vue' /* webpackChunkName: "components/plugins-store-categories" */).then(c => wrapFunctional(c.default || c)),
   PluginsStoreFilter: () => import('../..\\components\\plugins\\store\\whoobe\\store.filter.vue' /* webpackChunkName: "components/plugins-store-filter" */).then(c => wrapFunctional(c.default || c)),
-  PluginsStore: () => import('../..\\components\\plugins\\store\\whoobe\\store.js' /* webpackChunkName: "components/plugins-store" */).then(c => wrapFunctional(c.default || c)),
   PluginsStorePagination: () => import('../..\\components\\plugins\\store\\whoobe\\store.pagination.vue' /* webpackChunkName: "components/plugins-store-pagination" */).then(c => wrapFunctional(c.default || c)),
   PluginsStoreRelated: () => import('../..\\components\\plugins\\store\\whoobe\\store.related.vue' /* webpackChunkName: "components/plugins-store-related" */).then(c => wrapFunctional(c.default || c)),
-  PluginsStoreSlider: () => import('../..\\components\\plugins\\store\\whoobe\\store.slider.vue' /* webpackChunkName: "components/plugins-store-slider" */).then(c => wrapFunctional(c.default || c))
+  PluginsStoreSlider: () => import('../..\\components\\plugins\\store\\whoobe\\store.slider.vue' /* webpackChunkName: "components/plugins-store-slider" */).then(c => wrapFunctional(c.default || c)),
+  PluginsStore: () => import('../..\\components\\plugins\\store\\whoobe\\store.vue' /* webpackChunkName: "components/plugins-store" */).then(c => wrapFunctional(c.default || c))
 }
 
 for (const name in components) {

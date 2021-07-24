@@ -1,13 +1,13 @@
 <template>
     <div whoobe-store-related v-if="products.length" class="grid grid-cols-12 col-span-2">
     <h3 class="m-auto text-center store-related-title col-span-12">Related</h3>
-    <div whoobe-store-related-container class="flex flex-col whoobe-store-related relative" :class="$attrs.classe.replace('border','')" id="productRelated">
+    <div whoobe-store-related-container class="flex flex-col col-span-12 whoobe-store-related relative" :class="$attrs.classe.replace('border','')" id="productRelated">
                     
         <template v-for="(product,index) in products">
             <nuxt-link :to="'/store/product/' + product.slug" v-if="index>=start&&index<(start+limit)" >
             
                 <!-- <transition name="fade"> -->
-                    <div :key="product._id" class="transition-all duration-700 linear flex flex-col" :class="settings.loop.css">
+                    <div :key="product._id" class="w-full transition-all duration-700 linear flex flex-col" :class="settings.loop.css">
 
                         <template v-for="field in settings.loop.fields">
                             

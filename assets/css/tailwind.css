@@ -161,4 +161,7 @@ code , pre {
   margin-right: 0;
 }
 
+.snipcart-modal {
+  z-index: 10000000;
+}
 @tailwind utilities;

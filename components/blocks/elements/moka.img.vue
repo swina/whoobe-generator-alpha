@@ -1,4 +1,5 @@
 <template>
+    <!-- <nuxt-img :ref="el.id" :src="hasImage" :id="el.id" :caption="el.image && el.image.name ? el.image.caption||el.image.name : 'no-image'" :alt="el.image ? el.image.alternative_text||el.image.name : 'no-image'" :title="el.image && el.image.name ? el.image.name.split('.')[0] : 'no-image'" v-if="el.image" :class="$cssResponsive(el.css)"/> -->
     <img :ref="el.id" :src="hasImage" :id="el.id" :caption="el.image && el.image.name ? el.image.caption||el.image.name : 'no-image'" :alt="el.image ? el.image.alternative_text||el.image.name : 'no-image'" :title="el.image && el.image.name ? el.image.name.split('.')[0] : 'no-image'" v-if="el.image" :class="$cssResponsive(el.css)"/>
 </template>
 

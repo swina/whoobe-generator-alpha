@@ -11,7 +11,6 @@ async function configuration (){
   const buildNuxt = await whoobe.service ( 'build-nuxt' ).find()
   var configure = buildNuxt.data[0].blocks
   configure.target = buildNuxt.data[0].target
-
   //const ws = path.resolve ( 'config.json' )
   //const config = require ( ws )
   const mode = true //config.local
@@ -26,14 +25,17 @@ async function configuration (){
   await fs.writeFileSync ( path.resolve ( __dirname ) + '/config.json' , JSON.stringify ( configuration ) )
   return configure 
 }
-//default dynamic routes used by nuxpresso
+//default dynamic routes used by whoobe
 let dynamicRoutes = () => {
 
-  //let url = config.mode ? process.env.API_URL : config.url 
   return new Promise( (resolve) => {
     whoobe.service('build-nuxt').find().then ( res => {
-      
       let slugs = res.data[0].pagesToPublish
+
+      //*** add here your custom route slug ***
+      //slugs.push ( '__your_article_slug__' )
+      //*** end of the custom route
+
       return slugs
     }).then ( slugs => {
       whoobe.service('articles').find({ query: { $limit: 200, slug: { $in: slugs } }}).then ( response => { 
@@ -113,7 +115,7 @@ export default async () => {
         {
           //Used fonts
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css?family="  + config.fonts.join('|')
+          href: "https://fonts.googleapis.com/css?family="  + ( process.env.NODE_ENV === 'development' ? process.env.FONT_FAMILIES : config.fonts.join('|') )
         },
         {  
           //Material Design Icons
@@ -187,13 +189,14 @@ export default async () => {
     modules: [ 
       "@nuxtjs/tailwindcss",
       "@nuxtjs/axios",
-      'vue-scrollto/nuxt'
+      'vue-scrollto/nuxt',
+      '@nuxt/image',
     ],
     axios: {
       baseUrl: process.env.API_URL 
     },
     googleAnalytics: {
-      id: process.env.GOOGLE_ANALYTICS || 'UA-XXX-X'
+      id: config.analytics || process.env.GOOGLE_ANALYTICS || 'UA-XXX-X'
     },
     /*
     ** Build and generate configuration
@@ -201,7 +204,8 @@ export default async () => {
     generate: {
       routes: dynamicRoutes, //add dynamic routes
       fallback: true,
-      dir: config.target || path.resolve ( __dirname , './dist'  )
+      dir: config.target || path.resolve ( __dirname , './dist'  ),
+      exclude: !config.store ?  [ '/store' ] : [],
     },
     build: {
       /*

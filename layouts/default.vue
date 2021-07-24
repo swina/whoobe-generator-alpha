@@ -5,7 +5,9 @@
     </transition>
     <common-scroll-top class="invisible md:visible"/>
     <!--<moka-jivo-chat v-if="prod"/>--->
-    
+    <template v-if="$store.state.build.blocks.plugins.length" v-for="plugin in $store.state.plugins">
+      <common-plugin-wrapper :settings="plugin.editor.settings"  :block="null"  :plugin="plugin" :component="plugin.component"/>
+    </template>
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
     <span @click="action">
-        <a v-if="el.link.includes('//') && !el.link.includes('#popup?')" :href="link" :target="target">
+        <a v-if="el.link.includes('//') && !el.link.includes('#popup?')" :href="link" target="_blank">
             <component :is="component" :component="component" :el="el"/>
         </a>
         <nuxt-link v-if="!el.link.includes('//') && !el.link.includes('#popup?')" :to="link">

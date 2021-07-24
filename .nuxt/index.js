@@ -14,6 +14,7 @@ import { createStore } from './store.js'
 /* Plugins */
 
 import nuxt_plugin_plugin_286017f1 from 'nuxt_plugin_plugin_286017f1' // Source: .\\components\\plugin.js (mode: 'all')
+import nuxt_plugin_image_72962a8f from 'nuxt_plugin_image_72962a8f' // Source: .\\image.js (mode: 'all')
 import nuxt_plugin_vuescrollto_13f5ac16 from 'nuxt_plugin_vuescrollto_13f5ac16' // Source: .\\vue-scrollto.js (mode: 'client')
 import nuxt_plugin_axios_f0e1a4d8 from 'nuxt_plugin_axios_f0e1a4d8' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_googleanalytics_799da612 from 'nuxt_plugin_googleanalytics_799da612' // Source: .\\google-analytics.js (mode: 'client')
@@ -89,7 +90,7 @@ async function createApp(ssrContext, config = {}) {
   // here we inject the router and store to all child components,
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
-    head: {"title":"whoobe-store","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"whoobe","name":"whoobe static site generator","content":"NuxtJS\u002FVueJS\u002FFeathersjs\u002FTailwindCSS\u002F Full Static Site Generator"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Roboto|Montserrat|Barlow Condensed|Raleway"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Ficon?family=Material+Icons"}],"style":[],"script":[]},
+    head: {"title":"whoobe-store","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"whoobe","name":"whoobe static site generator","content":"NuxtJS\u002FVueJS\u002FFeathersjs\u002FTailwindCSS\u002F Full Static Site Generator"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Fcss?family=Asap+Condensed|Barlow+Condensed|Abel|Alice|Alegreya|Amethysta|Archivo+Black|Montserrat|Nunito+Sans|Roboto|Quattrocento|Raleway|Lora|PT+Sans|Alfa+Slab+One"},{"rel":"stylesheet","href":"https:\u002F\u002Ffonts.googleapis.com\u002Ficon?family=Material+Icons"}],"style":[],"script":[]},
 
     store,
     router,
@@ -220,6 +221,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_plugin_286017f1 === 'function') {
     await nuxt_plugin_plugin_286017f1(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_image_72962a8f === 'function') {
+    await nuxt_plugin_image_72962a8f(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_vuescrollto_13f5ac16 === 'function') {

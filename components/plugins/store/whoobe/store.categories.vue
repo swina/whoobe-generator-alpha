@@ -19,7 +19,7 @@
                     <div v-if="$attrs.facets && ( group === category.slug || category.slug === $route.params.slug )" class="ml-4">
                         <template v-for="facet in facets">
                             <nuxt-link :to="'/store/category/' + category.slug + '/' + facet.slug">
-                                <div v-if="facet.collection === category._id" :class="$attrs.facet === facet.slug ? 'font-bold':''">
+                                <div v-if="facet.collection === category._id" :class="$attrs.facet === facet.slug ? 'font-bold ' + $attrs.css : $attrs.css">
                                     {{ facet.name }}
                                 </div>
                             </nuxt-link>
@@ -27,7 +27,7 @@
                                 {{ facet.name }}
                             </div> -->
                         </template>
-                        <nuxt-link :to="'/store/category/' + category.slug">
+                        <nuxt-link :class="$attrs.css" :to="'/store/category/' + category.slug">
                             <div :class="!$attrs.facet?'font-bold':''">All</div>
                         </nuxt-link>
                     </div>

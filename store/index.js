@@ -9,7 +9,8 @@ export const state = () => ({
     shop: null,
     product_variations: null,
     seo_title: 'Whoobe',
-    seo_description: 'A visual blocks builder to generate full static websites, ecommerce and landing pages'
+    seo_description: 'A visual blocks builder to generate full static websites, ecommerce and landing pages',
+    build: null
 })
 
 export const mutations = {
@@ -31,6 +32,9 @@ export const mutations = {
     },
     SET_SEO_DESCRIPTION ( state , seo ){
         state.seo_description = seo
+    },
+    SET_BUILD ( state , build ){
+        state.build = build
     }
 }
 
@@ -44,10 +48,13 @@ export const actions = {
         commit ( 'SET_VARIATIONS' , shop_variations )
 
         const plugins = await whoobe.service ( 'plugins' ).find ( )
-        commit ( 'SET_PLUGINS' , plugins.data )
+        commit ( 'SET_PLUGINS' , plugins.data.filter ( plugin => plugin.general.enabled && plugin.general.global ) )
 
         const categories = await whoobe.service ( 'categories' ).find( { query : { $sort: { name: 1}}})
         commit ( 'SET_CATEGORIES' , categories.data )
+
+        const build = await whoobe.service ( 'build-nuxt' ).find ( )
+        commit ( 'SET_BUILD' , build.data[0] )
         //const articles = await whoobe.service ( 'articles' ).find ( { query: { $limit: 200 } } )
         //commit ( 'SET_ARTICLES' , articles.data )
     },

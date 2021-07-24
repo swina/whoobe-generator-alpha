@@ -7,7 +7,7 @@
                 <icon class="mr-2" v-if="!current && !settings.loop.slider" name="grid_on" @click="list=false" title="Grid view"/>
                 <icon v-if="!current && !settings.loop.slider" name="list" @click="list=true" title="List view"/>
             </div>
-            <div v-if="settings.general.display.cart.enabled" class="hidden w-full text-xs md:flex flex-row items-center justify-end snipcart-checkout z-modal cursor-pointer" :class="settings.general.display.cart.css">
+            <div v-if="settings.general.display.cart.enabled" class="hidden w-full text-xs md:flex flex-row items-center justify-end snipcart-checkout cursor-pointer" :class="settings.general.display.cart.css">
                 <span class="snipcart-items-count"></span>
                 <icon  :name="settings.general.display.cart.name||'mi:shooping_bag'" css="text-2xl"/>
                 <span class="snipcart-total-price"></span>  
@@ -113,7 +113,7 @@
                                         </div>
                                         <div v-else>
                                             <div :class="field.css" v-if="field.name==='description'" v-html="product.description"/>
-                                            <img :src="$imageURL(product[field.name][0])" :class="field.css" v-if="schema[field.name].type==='image_uri' && field.name != 'add_to_cart'" :title="product.name" :alt="product.name">
+                                            <img :src="$imageURL(product[field.name][0])" :class="field.css" v-if="schema[field.name].type==='image_uri' && field.name != 'add_to_cart'" :title="product.name" :alt="product.name"/>
                                             <button v-if="field.name==='add_to_cart'" :class="field.css">Add to cart</button>
                                         </div>
                                     </template>
@@ -134,7 +134,8 @@
                             :settings="settings" 
                             @page="setPage"/>
 
-                    <store-slider 
+                    <store-slider
+                        class="invisible md:visible" 
                         v-if="isLoop && settings.loop.slider && pages > 1"
                         :pages="pages"
                         :start="start"
@@ -151,7 +152,7 @@
                             <nuxt-link :to="'/store/product/' + product.slug">
                                 <div class="grid grid-cols-7 gap-2 w-full justify-start">
                                     <div class="col-span-2 md:col-span-1">
-                                        <img :src="$imageURL(product.assets[0])" class="w-32 h-32 object-cover">
+                                        <img :src="$imageURL(product.assets[0])" class="w-32 h-32 object-cover"/>
                                     </div>
                                     <div class="col-span-3 md:col-span-4 flex flex-col md:mx-5">
                                         <div :class="fieldClasse('category')"><small>{{ product.category }}</small></div>
@@ -226,7 +227,7 @@
                                         {{ current[field.name].join(' - ') }}
                                     </div>
                                     <div v-if="schema[field.name].type==='image_uri'" class="flex flex-col"> 
-                                        <img :src="$imageURL(current[field.name][currentImageIndex])" :class="field.css">
+                                        <img :src="$imageURL(current[field.name][currentImageIndex])" :class="field.css"/>
                                         <div class="flex flex-row flex-wrap" v-if="current.assets.length > 1">
                                             <template v-for="(asset,i) in current.assets" v-if="Array.isArray(current.assets)">
                                                 <img :src="$imageURL(asset)" class="w-16 h-16 border object-cover mt-1 mb-1 mr-1" :title="asset" @click="currentImageIndex=i"/>
@@ -242,16 +243,15 @@
                                         <div class="bg-transparent w-8 h-10 flex items-center justify-center border-l" @click="qty++">+</div>
                                     </div>
                                     <button 
-                                        @click="current=null"
                                         :key="field.name"
                                         :class="field.css"
                                         :data-item-quantity="qty"
                                         :data-item-id="current._id"
-                                        :data-item-image="productImage(current.assets)"
+                                        :data-item-image="$imageURL(current.assets[0])"
                                         :data-item-price="currentPrice"
                                         :data-item-name="current.name + ' ' + currentOption"
                                         :data-item-description="currentOption"
-                                        :data-item-url="'/store/product/' + current._id"> 
+                                        :data-item-url="'/store/products/' + current._id"> 
                                     Add to cart</button>
                                 </div>
                             </template>
@@ -287,7 +287,6 @@
                 <icon :name="settings.general.display.cart.name || 'shooping_bag'" label="Cart" :css="settings.general.display.navigation.icons_css"/>
             </span>
         </div>
-
         
     </div>
 
@@ -304,7 +303,7 @@ export default {
         'store-slider'      : () => import ( './store.slider.vue' ),
         'store-related'     : () => import ( './store.related.vue' ),
         'double-range'      : () => import ( '@/components/common/double.range.vue'),
-        'snipcart'          : () => import ( '@/components/plugins/store/whoobe/store.vue')
+        //'snipcart'          : () => import ( '@/components/plugins/store/whoobe/store.vue')
     },
     data:()=>({
         apikey: false,
@@ -504,8 +503,7 @@ export default {
             this.qryByPrice()
         },
         productImage ( asset ){
-            console.log ( asset )
-            this.$imageURL(asset[this.currentImageIndex]) 
+            this.$imageURL(asset[0]) 
         },
         variationSelected(variation,css){
             return variation === this.currentOption ?
@@ -530,7 +528,6 @@ export default {
             if ( this.qryIds.length ){
                 //qryProducts = []
                 qryProducts = []
-                this.max = this.qryIds.length
                 this.qryIds.forEach ( name => {
                     qryProducts.push ( this.allProducts.filter ( product  => product.name === name )[0] )
                 })
@@ -676,7 +673,7 @@ export default {
         !this.lang ? this.lang = this.language['en'] : null
         this.settings = this.$attrs.plugin.settings
         this.schema = model
-        this.settings.loop.ids ?
+        this.settings.loop.records.ids ?
             this.qryIds = this.settings.loop.records.ids.split(',') : null
         this.limit = parseInt(this.$attrs.plugin.settings.loop.records.limit)
 

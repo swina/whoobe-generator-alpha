@@ -167,9 +167,6 @@
   "PluginsStoreFilter": {
     "description": "Auto imported from components/plugins/store/whoobe/store.filter.vue"
   },
-  "PluginsStore": {
-    "description": "Auto imported from components/plugins/store/whoobe/store.js"
-  },
   "PluginsStorePagination": {
     "description": "Auto imported from components/plugins/store/whoobe/store.pagination.vue"
   },
@@ -178,5 +175,8 @@
   },
   "PluginsStoreSlider": {
     "description": "Auto imported from components/plugins/store/whoobe/store.slider.vue"
+  },
+  "PluginsStore": {
+    "description": "Auto imported from components/plugins/store/whoobe/store.vue"
   }
 }

@@ -62,7 +62,7 @@ You can directly use them in pages and other components without the need to impo
 - `<PluginsStoreAddToCart>` | `<plugins-store-add-to-cart>` (components/plugins/store/whoobe/store.add.to.cart.js)
 - `<PluginsStoreCategories>` | `<plugins-store-categories>` (components/plugins/store/whoobe/store.categories.vue)
 - `<PluginsStoreFilter>` | `<plugins-store-filter>` (components/plugins/store/whoobe/store.filter.vue)
-- `<PluginsStore>` | `<plugins-store>` (components/plugins/store/whoobe/store.js)
 - `<PluginsStorePagination>` | `<plugins-store-pagination>` (components/plugins/store/whoobe/store.pagination.vue)
 - `<PluginsStoreRelated>` | `<plugins-store-related>` (components/plugins/store/whoobe/store.related.vue)
 - `<PluginsStoreSlider>` | `<plugins-store-slider>` (components/plugins/store/whoobe/store.slider.vue)
+- `<PluginsStore>` | `<plugins-store>` (components/plugins/store/whoobe/store.vue)

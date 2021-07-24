@@ -56,10 +56,10 @@ export { default as PluginsStoreWhoobeProduct } from '../..\\components\\plugins
 export { default as PluginsStoreAddToCart } from '../..\\components\\plugins\\store\\whoobe\\store.add.to.cart.js'
 export { default as PluginsStoreCategories } from '../..\\components\\plugins\\store\\whoobe\\store.categories.vue'
 export { default as PluginsStoreFilter } from '../..\\components\\plugins\\store\\whoobe\\store.filter.vue'
-export { default as PluginsStore } from '../..\\components\\plugins\\store\\whoobe\\store.js'
 export { default as PluginsStorePagination } from '../..\\components\\plugins\\store\\whoobe\\store.pagination.vue'
 export { default as PluginsStoreRelated } from '../..\\components\\plugins\\store\\whoobe\\store.related.vue'
 export { default as PluginsStoreSlider } from '../..\\components\\plugins\\store\\whoobe\\store.slider.vue'
+export { default as PluginsStore } from '../..\\components\\plugins\\store\\whoobe\\store.vue'
 
 export const LazyHome = import('../..\\components\\Home.vue' /* webpackChunkName: "components/home" */).then(c => wrapFunctional(c.default || c))
 export const LazyNotFound = import('../..\\components\\NotFound.vue' /* webpackChunkName: "components/not-found" */).then(c => wrapFunctional(c.default || c))
@@ -117,7 +117,7 @@ export const LazyPluginsStoreWhoobeProduct = import('../..\\components\\plugins\
 export const LazyPluginsStoreAddToCart = import('../..\\components\\plugins\\store\\whoobe\\store.add.to.cart.js' /* webpackChunkName: "components/plugins-store-add-to-cart" */).then(c => wrapFunctional(c.default || c))
 export const LazyPluginsStoreCategories = import('../..\\components\\plugins\\store\\whoobe\\store.categories.vue' /* webpackChunkName: "components/plugins-store-categories" */).then(c => wrapFunctional(c.default || c))
 export const LazyPluginsStoreFilter = import('../..\\components\\plugins\\store\\whoobe\\store.filter.vue' /* webpackChunkName: "components/plugins-store-filter" */).then(c => wrapFunctional(c.default || c))
-export const LazyPluginsStore = import('../..\\components\\plugins\\store\\whoobe\\store.js' /* webpackChunkName: "components/plugins-store" */).then(c => wrapFunctional(c.default || c))
 export const LazyPluginsStorePagination = import('../..\\components\\plugins\\store\\whoobe\\store.pagination.vue' /* webpackChunkName: "components/plugins-store-pagination" */).then(c => wrapFunctional(c.default || c))
 export const LazyPluginsStoreRelated = import('../..\\components\\plugins\\store\\whoobe\\store.related.vue' /* webpackChunkName: "components/plugins-store-related" */).then(c => wrapFunctional(c.default || c))
 export const LazyPluginsStoreSlider = import('../..\\components\\plugins\\store\\whoobe\\store.slider.vue' /* webpackChunkName: "components/plugins-store-slider" */).then(c => wrapFunctional(c.default || c))
+export const LazyPluginsStore = import('../..\\components\\plugins\\store\\whoobe\\store.vue' /* webpackChunkName: "components/plugins-store" */).then(c => wrapFunctional(c.default || c))

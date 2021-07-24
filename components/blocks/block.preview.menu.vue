@@ -7,7 +7,7 @@
                 <template v-for="(item,i) in el.blocks">
 
 
-                        <a v-if="item.link && item.link.includes('//') && !item.blocks.length" :href="item.link" :class="item.css">
+                        <a v-if="item.link && item.link.includes('//') && !item.blocks.length" :href="item.link" :class="item.css" target="_blank">
                             {{ item.content }}
                         </a>
                         <nuxt-link v-if="item.link && !item.link.includes('//') && !item.blocks.length" :class="item.css" :to="item.link">{{ item.content }}</nuxt-link>
@@ -49,9 +49,17 @@
                             </div>
                             <div v-else class="flex flex-col">
                                 <template v-for="subitem in item.blocks">
-                                    <a :href="subitem.link" :class="item.css">
+                                    
+                                    <a v-if="subitem.link && subitem.link.includes('//')" :href="subitem.link" :class="el.css.submenu_items" target="_blank">
                                         <span>{{ subitem.content }}</span>
                                     </a>
+                                    <nuxt-link v-if="subitem.link && !subitem.link.includes('//')" :to="subitem.link" :class="el.css.submenu_items">
+                                        <span>{{ subitem.content }}</span>
+                                    </nuxt-link>
+                                    <div v-if="!subitem.link">
+                                        <span v-if="subitem.content" :class="el.css.submenu_items">{{ subitem.content }}</span>
+                                        <div v-if="!subitem.content" :class="el.css.submenu_items"></div>
+                                    </div>
                                 </template>
                             </div>
                         </div>
@@ -71,7 +79,7 @@
             <template menu_responsive v-if="responsive" v-for="(item,i) in el.blocks" >
                 <div v-if="responsive" class="transition-all duration-700 ease-in-out md:hidden w-0" :class="opacity">
 
-                    <a v-if="item.link && item.link.includes('//')" :href="item.link">
+                    <a v-if="item.link && item.link.includes('//')" :href="item.link" target="_blank">
                         <div :class="el.css.responsive_items">{{ item.content }}</div>
                     </a>
                     <nuxt-link v-if="item.link && !item.link.includes('//')" :to="item.link" @click="menu_response=!menu_responsive">
@@ -82,8 +90,8 @@
                             {{ item.content }}
                     </div>
                 </div>    
-
-                    <div :ref="'submenu_'+i" submenu-responsive v-if="submenu===i && item.blocks && item.blocks.length" :class="el.css.submenu + ' absolute flex top-0 flex-col z-highest'" @click="el.css.submenu_behavior?submenu=null:submenu=null">
+                
+                    <div :ref="'submenu_'+i" submenu-responsive v-if="submenu===i && item.blocks && item.blocks.length" @click="el.css.submenu_behavior?submenu=null:submenu=null">
                         
                         <div v-if="item.blocks[0].blocks && submenu===i" @mouseleave="el.css.submenu_behavior?submenu=null:submenu=null" :style="getPos(i)">
                             
@@ -104,9 +112,9 @@
                                 />
                             </template>
                         </div>
-                        <div v-else class="flex flex-col">
+                        <div v-else class="flex flex-col pl-4">
                             <template v-for="subitem in item.blocks">
-                                <a :href="subitem.link" :class="item.css">
+                                <a :href="subitem.link" :class="el.css.responsive_items">
                                     <span>{{ subitem.content }}</span>
                                 </a>
                             </template>

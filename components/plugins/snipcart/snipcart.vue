@@ -1,5 +1,5 @@
 <template>
-<div v-if="cart" id="snipcart" data-config-modal-style="side" :data-api-key="apiKey" hidden></div>
+  <div v-if="cart && apiKey" id="snipcart" data-config-modal-style="side" :data-api-key="apiKey"></div>
 </template>
 
 <script>
@@ -23,7 +23,7 @@ function injectScript() {
 }
 
 export default {
-    name: 'MokaSnipcart',
+    name: 'WhoobeSnipcart',
     data:()=>({
         apiKey : '',
         cart: false,
@@ -54,6 +54,21 @@ export default {
     },
     mounted(){
         this.apiKey = this.$attrs.plugin.component.config.apikey //this.$attrs.plugin.component.config['apikey']
+        // if ( process.client ){
+        //   let snipcart = document.createElement('div')
+        //   snipcart.setAttribute('id','snipcart')
+        //   snipcart.setAttribute('class','z-top')
+        //   snipcart.setAttribute("data-api-key" , this.apiKey)
+        //   snipcart.setAttribute("data-config-modal-style" , 'side' )
+        //   document.querySelector('#__layout').appendChild( snipcart )
+
+        // }
     }
 }
 </script>
+
+<style>
+.snipcart-modal {
+  z-index: 1000000;
+}
+</style>

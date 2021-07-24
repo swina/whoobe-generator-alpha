@@ -1,7 +1,8 @@
 <template>
-    <client-only>
+    <!-- <client-only> -->
         <blocks-block-preview v-if="article" :doc="article.blocks.json" :article="article"/>
-    </client-only>
+       
+    <!-- </client-only> -->
 </template>
 
 <script>
@@ -28,22 +29,26 @@ export default {
                     }
                 ]
             }
-            
+        } else {
+            this.$router.push('/')
         }
-       return 
+        
         
         
     }, 
-    async asyncData({app,route}){
-        
-        const articles = await app.$whoobe.service ( 'articles' ).find ( {
-            query : {
-                slug : route.params.slug
+    async asyncData({app,route,store}){
+        //if ( store.state.build.pageToPublish.length  ){
+            const articles = await app.$whoobe.service ( 'articles' ).find ( {
+                query : {
+                    slug : route.params.slug
+                }
+            })
+            return { 
+                article : articles.data.length ? articles.data[0] : null
             }
-        })
-        return { 
-            article : articles.data[0]
-        }
+        //} else {
+        //    return { article : null }
+        //}
     }
   /*
     apollo:{
